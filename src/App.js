@@ -1,13 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-
-let name = "Mr"
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Stats from "./components/Stats";
 
 function App() {
   return (
+    <>
     <div className="blank">
-      <h1>Hello {name} </h1>
+      <Navbar title = "Check"/>
+      <Stats />
     </div>
+    
+    </>
   );
 }
 
