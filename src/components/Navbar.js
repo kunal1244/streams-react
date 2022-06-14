@@ -1,9 +1,14 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faMagnifyingGlass, faMoon } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faMagnifyingGlass, faMoon);
 
 export default function Navbar(props) {
   return (
-    <nav className="navbar navbar-expand-lg bg-dark">
+    <nav className={`navbar navbar-expand-lg navbar-${props.darkMode} bg-${props.darkMode}`}>
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           Test-Dev
@@ -66,10 +71,19 @@ export default function Navbar(props) {
               placeholder="Search"
               aria-label="Search"
             />
-            <button className="btn btn-primary" type="submit">
-              Search
+            <button className="btn" type="submit">
+              <span className={`text-${props.darkMode === 'light'?'dark':'light'}`}>
+                <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
+              </span>
             </button>
           </form>
+          <div className="d-flex form-check form-switch mx-2">
+            <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onClick={props.toggleDarkMode}/>
+              <span className={` mx-2 text-${props.darkMode === 'light'?'dark':'light'}`}>
+                <FontAwesomeIcon icon="fa-solid fa-moon" />
+              </span>
+          </div>
+
         </div>
       </div>
     </nav>
